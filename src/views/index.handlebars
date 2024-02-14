@@ -1,0 +1,30 @@
+<h1>Este es un mensaje desde handlebars</h1>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci illum at molestiae eligendi mollitia ratione eveniet cupiditate cumque deserunt suscipit harum molestias, laborum architecto itaque!</p>
+
+<h2>Mi nombre es {{usuario.name}}</h2>
+<h2>Y mi apellido es {{usuario.apellido}}</h2>
+
+{{#if usuario.mayorEdad}}{{!-- No saltes espacios antes del # --}}
+<h3>Eres mayor de edad, puedes pasar por aqui</h3>
+{{else}}
+<h3>Claro que no puedes pasar, que te pasa? you are mad? </h3>
+{{/if}}{{!-- No se te olvide cerrar llaves --}}
+
+{{!-- INVOCAMOS EL PARTIAL --}}
+{{>cards}}{{!-- Usar el nombre correc
+
+
+to(igual a archivo) o mandara error --}}
+
+{{!-- Vmaos a renderizar un listado de usuarios que recibimos del servidor --}}
+<h2>Lista de usaurios</h2>
+<ul id="lista-usuarios"></ul>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+{{!-- CDN DE SOCKET.IO --}}
+<script src="/js/main.js"></script>{{!--No olvidarnos de que el nuestro va siempre qal final  --}}
+
+
+
+
+
