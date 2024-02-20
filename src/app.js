@@ -3,7 +3,7 @@ const express = require("express")
 const app = express()
 const PUERTO = 8080
 //Traemos modulo handlebars
-const exphbs = require("express-handlebars")
+const exphbs = require("express-handlebars")//importacion de hanldebars
 const viewsRouter= require("./routes/views.router.js")//impotamos views
 //Importacion de socket.io paso 2
 const socket = require("socket.io")
@@ -25,9 +25,10 @@ app.use("/app/users", userRouter)
 
 //configuramos handlears 
 app.engine("handlebars", exphbs.engine())
-//Aca seteamos el handlebars
+//Aca estamos configurando el motor de plantillas. le digo a express que cuando encuentre 
+//un archivo .handlebars, lo renderice con el motor de plantillas 
 app.set("view engine", "handlebars")
-//Seteamos de nuevo 
+//Aca tambien le decimos que elmotor de plantillas a usar es handlebars 
 app.set("views" , "./src/views");
 //Aca le decimos donde se encuentran los archivos .handlebars 
 
@@ -88,6 +89,8 @@ const usuarios = [
 }
 ]
 
+
+
 io.on("connection", (socket)=>{
     console.log("Un cleinte se conecto conmigo")
     //No olvidarnos el nombre del "Evento a escuchar", que tiene que ser el mismo
@@ -99,8 +102,16 @@ io.on("connection", (socket)=>{
 
     socket.emit("saludito", "Hola cliente como estas? QUIERES COCAINA?");
 
+
     //Enviamos el arrayUsuarios
     socket.emit("Usuarios", usuarios);
+
+   socket.on("formulario", (data)=>{
+    console.log(data)
+   })
+  
+                      
+   
 });
 //con on, le metemos connection para emepezar la conexion entre el usuaio y server
 //con el msaneje hace aviso de que el cliente se conecto

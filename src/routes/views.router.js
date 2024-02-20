@@ -30,9 +30,35 @@ router.get("/pantilla", (req,res)=>{
 que piensas hacer */
 
 
+/* Numero de intentos: quien sabe, ya fueron unos cuantos muchos
+
+const valores = {};
+                      
+document.getElementById("envio").addEventListener("click", ()=>{
+
+    const valores = {
+        name: document.getElementById("nombre").value,
+        correo: document.getElementById("correo").value,
+        contraseña: document.getElementById("contraseña").value,
+
+    }
+
+})
+
+router.get("/user", (req,res)=>{
+    res.render("register", valores)
+}) */
 
 
+router.get("/chat", (req,res)=>{
+ 
+    res.render("chat")
+})
 
+
+router.get("/user", (req,res)=>{
+    res.render("register")
+})
 /* 
 router.post("/user", (req,res)=>{
     document.getElementById("envio").addEventListener("click", ()=>{
@@ -62,6 +88,10 @@ o iterar sobre arrays
 no para renderizar funciones como emit 
 
 */
+
+
+
+
 
 
 
