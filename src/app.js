@@ -1,10 +1,19 @@
 
+
 const express = require("express")
 const app = express()
 const PUERTO = 8080
 //Traemos modulo handlebars
 const exphbs = require("express-handlebars")//importacion de hanldebars
 const viewsRouter= require("./routes/views.router.js")//impotamos views
+
+
+//Vamo a priobar a importar mongoose por que sale buffering y no lo tengo importado 
+const mongoose = require("mongoose")
+
+
+const usuariosRouter = require("./routes/usuarios.router.js")
+
 //Importacion de socket.io paso 2
 const socket = require("socket.io")
 
@@ -19,6 +28,33 @@ const userRouter = require("./routes/users.router")
 //utilizamos app para que use las funciones de rutas 
 app.use("/app/pets", petsRouter)
 app.use("/app/users", userRouter)
+
+//Hcaemos el requrimiento de products y despues utilizaremos el use para una ruta especifica 
+const productsRouter = require("./routes/products.router.js")
+
+app.use("/products", productsRouter)
+
+
+/* Conexion con mongoose y el use de mongoose con algunas rutas */
+
+//MongoDB  rutas
+app.use("/usuarios", usuariosRouter)
+
+
+
+
+mongoose.connect("mongodb+srv://FelipeReyes50045:coderhouse@vidar771.pck1zis.mongodb.net/tienda?retryWrites=true&w=majority")
+.then(() => console.log('Conexión exitosa a MongoDB'))
+.catch((error) => console.error('Error al conectar a MongoDB:', error));
+//conexion con moongoose y atlas(Info en la nube )
+
+
+
+/* Cierre de el bloque donde estara o utilizado con mongoose */
+
+
+
+
 
  //CAPETIÑA PUBLIC 
  app.use(express.static("./src/public"))

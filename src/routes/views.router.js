@@ -50,15 +50,15 @@ router.get("/user", (req,res)=>{
 }) */
 
 
-router.get("/chat", (req,res)=>{
+/* router.get("/chat", (req,res)=>{
  
     res.render("chat")
 })
 
 
 router.get("/user", (req,res)=>{
-    res.render("register")
-})
+ //   res.render("register")
+}) */
 /* 
 router.post("/user", (req,res)=>{
     document.getElementById("envio").addEventListener("click", ()=>{

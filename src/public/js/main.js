@@ -59,8 +59,9 @@ document.getElementById("envioChat").addEventListener("click", ()=>{
     const mensaje = {
         mensaje: document.getElementById("mensaje").value
     }
-
-    console.log(mensaje)
+//Si toma bien el valor de lo que stomo en input, viene el seguno paso que es 
+//poner el mensaje en alguna variable y resetearle lo escrito cada que se haga un envio
+    console.log(mensaje) 
 })
 
 socket.emit("Mensaje" )
