@@ -5,7 +5,7 @@ const mongoose = require("mongoose")
 //los que ya esten usando este modelo simplemente cambio la ruta ya que al final e nombre de la variable poco importa ya que instancia el valor que se esta exportando desde la ruta requerida 
 
 const usuariosCollection = "usuarios"
-
+//este archivo fue de prueba 
 const usuariosSchema = new mongoose.Schema({
     nombre: String, 
     apellido: String, 

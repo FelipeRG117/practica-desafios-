@@ -12,7 +12,7 @@ const viewsRouter= require("./routes/views.router.js")//impotamos views
 const mongoose = require("mongoose")
 
 
-const usuariosRouter = require("./routes/usuarios.router.js")
+const usuariosRouter = require("./routes/products.router.js")
 
 //Importacion de socket.io paso 2
 const socket = require("socket.io")

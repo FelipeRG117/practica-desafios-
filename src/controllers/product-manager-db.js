@@ -13,7 +13,7 @@ async addProduct({title, description, price, img, code, stock, category, thumbna
 try {
     
     //validacion en condicional if en caso de qe algunodelos parametros sea falso 
-    if (!title || !description || !price || !img || !code || !stock || !category) {
+    if (!title || !description || !price || !code || !stock || !category) {
      console.log("Falta alguno de los parametros a recibir para crear un nuevo doc")
      return;
     } 
@@ -56,6 +56,7 @@ try {
 async getProducts() {
     try {
     const productos = await ProductModel.find()
+    console.log(productos)
     return productos 
 
     } catch (error) {
