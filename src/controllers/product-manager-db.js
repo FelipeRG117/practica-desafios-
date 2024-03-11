@@ -1,7 +1,7 @@
 //Aqui vamos a estar requisiriendo los mdelos creados con mongoDB y creado una class con funcinoes para eliminacion actualizacion etc
 
 //Conejo: Traemos y requrimos el model creado para productos 
-const ProductModel = require("../models/productos-model.js")
+const ProductModel = require("../models/productos-model")
 
 
 class ProductManager {
@@ -28,7 +28,7 @@ try {
     //Como cuando se crea el modelo se hace haciendo un objeto con clave valor, le hacemos un new aprductModel y por parametro le metemos un objeeto con clave y valor que tendra el mismo valor que se recibe por parametros del addProduct
 
 
-    const newProduct = new ProductoModel({
+    const newProduct = new ProductModel({
         title, 
         description, 
         price,
@@ -57,7 +57,7 @@ async getProducts() {
     try {
     const productos = await ProductModel.find()
     console.log(productos)
-    return productos 
+    return productos;
 
     } catch (error) {
         console.log("Ha habido un error en " + error)
@@ -88,17 +88,19 @@ if (producto) {
 
 async updateProduct(id, update){
 try{
-const productoAcualizado = await ProductModel.findByIdAndUpdate(id, update)
+const productoActualizado = await ProductModel.findByIdAndUpdate(id, update)
 //validacion si existe el id o no para seguir prosiguiendo
-if(productoAcualizado){
-return productoActualizado;
+if(productoActualizado){ 
+
+    
+return console.log(productoActualizado);
 
 }else{
 console.log("Uno/s parametro de update salio erroneo")
 }
 
 }catch(err){
-    console.log("Ha habido un error en " + error)
+    console.log("Ha habido un error en " + err)
 }
 }
 
@@ -106,7 +108,8 @@ console.log("Uno/s parametro de update salio erroneo")
 
 async deleteProduct(id){
     try{
-        const producto = await ProductoModel.deleteProduct(id)
+       
+        const producto = await ProductModel.deleteOne({_id: id})
 //validacion si no hay ningun problema 
 if (producto) {
     return console.log(producto)

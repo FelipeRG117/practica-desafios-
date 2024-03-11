@@ -23,6 +23,10 @@ const socket = require("socket.io")
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
 //Importamos las routes 
+//importo el router de carrito 
+const carritoRouter = require("./routes/carritos.router.js")
+app.use("/carrito", carritoRouter)
+
 const petsRouter = require("./routes/pets.router")
 const userRouter = require("./routes/users.router")
 //utilizamos app para que use las funciones de rutas 
