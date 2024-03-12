@@ -36,6 +36,13 @@ const productsSchema = new mongoose.Schema({
         type: [String]
     }
 })
+productsSchema.pre("findOne", function (next) {
+    this.populate("productos");
+    next();
+  })
+
+
+
 //Aqui ni el img ni thimnails estan especificados para ser obligatorios 
 const ProductModel= mongoose.model(productsCollection, productsSchema)
 //aqui ya creamos el modelo de products "listo" para empezar a hacer pruebas con model y del model al routes(Voy a cambiar la ruta de clientes model a productos model en controllers de product)
