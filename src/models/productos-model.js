@@ -36,10 +36,7 @@ const productsSchema = new mongoose.Schema({
         type: [String]
     }
 })
-productsSchema.pre("findOne", function (next) {
-    this.populate("productos");
-    next();
-  })
+
 
 
 

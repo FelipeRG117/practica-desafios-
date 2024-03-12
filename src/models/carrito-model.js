@@ -11,7 +11,7 @@ const cartsSchema = new mongoose.Schema({
       producto: {
         //que lo ponga de manera de array significa que va a poder contener multiples objetos en su interior
         type: mongoose.Schema.Types.ObjectId,
-        ref: "productos",
+        ref: "producto",
         required: true
       }, //separamos el contenido principal de quantity por que son dos cmampos diferentes, de un lado el id para poder referenciarlo y utilizar populationy el quantity que sirve para ver la cantidad del prodcto
       quantity: {
@@ -23,10 +23,11 @@ const cartsSchema = new mongoose.Schema({
 }); //es un documento que contiene un campo con array y dentro del array guarda un objeto que guarda id y quantity
 
 //Vamos a introducir el midleware que me permite no usar population en todos lados donde haga el findById al carrito 
-/* cartsSchema.pre("findOne", function (next) {
-  this.populate("productos");
+
+cartsSchema.pre("findOne", function (next) {
+  this.populate("products.producto");
   next();
-}) */
+})
 
 
 //creamos el modelo con el nombre y esquema de carrito
