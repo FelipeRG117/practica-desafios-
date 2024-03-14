@@ -39,23 +39,19 @@ router.post("/", async (req,res)=>{
 })
 
 //crear producto dentro de algun carrito 
-router.post("/:lid", async (req,res)=>{
-//de la ruta dinamica tomamos el id y del req.body el producto 
-const cid = req.params.lid
-const product = req.body
-    try{
-        //Una ez que ya tengamos estio vamos a hacer las fucnniones del controllers para poder ejecutar y meter el producto dentro del cart 
-        const productInCart = await cartManager.addProductInCart(cid, product)
-        if(productInCart){
-            console.log(productInCart)
-            res.json(productInCart)
-        }
-        console.log(productInCart)
-        return null;
-    }catch(err){
-        console.log("Ha habido un error al crear ell post de product in Cart", err)
+router.post("/:cid/producto/:pid", async (req,res)=> {
+    const cartId = req.params.cid;
+    const productId = req.params.pid;
+    const quantity = req.body.quantity || 1;
+
+    try {
+        const actualizarCarrito = await cartManager.addProductInCart(cartId, productId, quantity);
+        res.json(actualizarCarrito.products);
+    } catch (error) {
+        console.error("Error al agregar producto al carrito", error);
+        res.status(500).json({ error: "Error interno del servidor" });
     }
-})
+});
 
 
 //vamos a probar con getById 
@@ -68,7 +64,7 @@ router.get("/:pid", async (req,res)=>{
 
         //vamos a traer carrito por id 
         const carrito = await cartManager.getCarritoById(lid)
-       // console.log(carrito)
+        console.log(carrito)
         res.json(carrito)
 
     }catch(err){
@@ -77,7 +73,18 @@ router.get("/:pid", async (req,res)=>{
 
 })
 
+//Eliminacion de carrito
+router.delete("/:cid", async (req,res)=>{
+    const cartId = req.params.cid   
+    try{
+const cartDel = await cartManager.deleteCart(cartId)
+res.status(200).json({message: "Eliminacion exitosa"})
 
+
+    }catch(err){
+        console.log("Huboun error a la ghora de elimianr carrito", err)
+    }
+})
 
 
 

@@ -11,7 +11,7 @@ const cartsSchema = new mongoose.Schema({
       producto: {
         //que lo ponga de manera de array significa que va a poder contener multiples objetos en su interior
         type: mongoose.Schema.Types.ObjectId,
-        ref: "producto",
+        ref: "products",
         required: true
       }, //separamos el contenido principal de quantity por que son dos cmampos diferentes, de un lado el id para poder referenciarlo y utilizar populationy el quantity que sirve para ver la cantidad del prodcto
       quantity: {
