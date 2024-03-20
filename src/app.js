@@ -28,7 +28,7 @@ const carritoRouter = require("./routes/carritos.router.js")
 app.use("/carrito", carritoRouter)
 
 const petsRouter = require("./routes/pets.router")
-const userRouter = require("./routes/users.router")
+const userRouter = require("./routes/usuarios.router.js")
 //utilizamos app para que use las funciones de rutas 
 app.use("/app/pets", petsRouter)
 app.use("/app/users", userRouter)

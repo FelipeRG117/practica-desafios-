@@ -59,14 +59,19 @@ async deleteCart(cid){
       
         try {
             const carrito = await this.getCarritoById(cartId);
+            
+            console.log(carrito +"este es carrito")
+            console.log(carrito.products + "este es carrito.products")
+            console.log(productId + "esto es lo que recibo por parametros")
+
             const existeProducto = carrito.products.find(item => item.producto.toString() === productId);
+            console.log(existeProducto + "estes es existePorducto")
+
 
             if(existeProducto) {
                 existeProducto.quantity += quantity; 
             }else {
-                carrito.products.p
-                
-                ush({producto: productId, quantity});
+                carrito.products.push({producto: productId, quantity});
             }
 
             //Cuuando modifican tiene que marcarlo con "mar,Modified"

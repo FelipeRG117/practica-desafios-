@@ -4,13 +4,13 @@ const router = express.Router();
 
 const arrayProductos = [
     {name: "PO",
-    titulo: "guerrero dragon",
+    titulo: "dragon",
     age : 2000,},
     {name: "Tigresa",
-    titulo: "esposa del guerrero dragon",
+    titulo: "dragon",
     age : 20,},
     {name: "grulla",
-    titulo: "Maestro marcial",
+    titulo: "pequeño",
     age : 4000,}
 ]
 

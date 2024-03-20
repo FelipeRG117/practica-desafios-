@@ -1,4 +1,4 @@
-/* const express = require("express")
+const express = require("express")
 
 const router = express.Router()
 
@@ -9,8 +9,8 @@ const usuariosModel = require("../models/clientes-model.js")
 router.get("/", async (req,res)=>{
 try {
     const usuarios = await usuariosModel.find()
- 
-res.json(usuarios)
+
+res.render("usuarios",{usuarios: usuarios})
 //esto no fue mas que de prueba, ya no es relevante  para el manejo de mi dbs como lo es products router 
 } catch (error) {
     console.log("hubo un error al traer documentos de mongo, " + error)
@@ -18,6 +18,6 @@ res.json(usuarios)
 })
 
 
-module.exports = router */
+module.exports = router
 
 

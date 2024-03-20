@@ -29,6 +29,7 @@
     "function-bind": "^1.1.2",
     "get-intrinsic": "^1.2.2",
     "gopd": "^1.0.1",
+    "handlebars": "^4.7.8",
     "has-property-descriptors": "^1.0.1",
     "has-proto": "^1.0.1",
     "has-symbols": "^1.0.3",
