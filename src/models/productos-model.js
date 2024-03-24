@@ -2,7 +2,7 @@
 const mongoose = require("mongoose")
 
 const productsCollection = "products"
-
+const mongoosePaginate = require("mongoose-paginate-v2")
 const productsSchema = new mongoose.Schema({
     title:{
         type: String,
@@ -37,7 +37,7 @@ const productsSchema = new mongoose.Schema({
     }
 })
 
-
+productsSchema.plugin(mongoosePaginate)
 
 
 //Aqui ni el img ni thimnails estan especificados para ser obligatorios 

@@ -11,9 +11,6 @@ const viewsRouter= require("./routes/views.router.js")//impotamos views
 //Vamo a priobar a importar mongoose por que sale buffering y no lo tengo importado 
 const mongoose = require("mongoose")
 
-
-const usuariosRouter = require("./routes/products.router.js")
-
 //Importacion de socket.io paso 2
 const socket = require("socket.io")
 
@@ -27,22 +24,16 @@ app.use(express.urlencoded({extended:true}));
 const carritoRouter = require("./routes/carritos.router.js")
 app.use("/carrito", carritoRouter)
 
-const petsRouter = require("./routes/pets.router")
-const userRouter = require("./routes/usuarios.router.js")
-//utilizamos app para que use las funciones de rutas 
-app.use("/app/pets", petsRouter)
-app.use("/app/users", userRouter)
-
 //Hcaemos el requrimiento de products y despues utilizaremos el use para una ruta especifica 
-const productsRouter = require("./routes/products.router.js")
 
-app.use("/products", productsRouter)
 
 
 /* Conexion con mongoose y el use de mongoose con algunas rutas */
 
 //MongoDB  rutas
-app.use("/usuarios", usuariosRouter)
+const productsRouter = require("./routes/products.router.js")
+
+app.use("/products", productsRouter)
 
 
 

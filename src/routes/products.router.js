@@ -26,14 +26,28 @@ const productManager = new ProductManager()
 router.get("/", async (req,res)=>{3
     try {
         //ya que tenemos instancia la class de controllers, osea el productmanager vamos aver si jala primero con el get y devolver en json ya que no puedo iterar sobre handlebars 
-        
+        const {page=1, limit = 2}= req.query;
+        const products = await productManager.getProducts({
+            page: parseInt(page),
+            limit: parseInt(limit)
+        })
 
-        const productos = await productManager.getProducts()
-        console.log(productos)
-        res.json(productos)
-        //A la hora de hacer un GET en postman no me devolvia nada y me mandaba un HTML como un tipo "error" pero cabe recordar que postman se le ocupa hacer un return para que devuelva la respuesta, entonces solo hice un return y ahora si me devolvio la respuesta correctamente 
-        return;
+       const newArray = products.docs.map(product=>{
+        const {_id, ...rest}= product.toObject();
+        return rest
+       })
 
+       res.render("products", {
+        products: newArray,
+        hasPrevPage: products.hasPrevPage,
+        hasNextPage: products.hasNextPage,
+        prevPage:products.prevPage,
+        nextPage: products.nextPage,
+        currentPage: products.page,
+        totalPages: productstotalPages,
+        user: req.session.user
+       }); 
+       
     } catch (error) {
         console.log("Hubo un error en router get por  " + error)
     }
